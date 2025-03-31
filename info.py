@@ -14,7 +14,7 @@ def is_enabled(value, default):
 #---------------------------------------------------------------         ,
 SESSION = environ.get('SESSION', 'Media_search')
 API_ID = int(environ.get('API_ID', '25251875'))
-API_HASH = environ.get('API_HASH', '9f413b540c859573a91299d252e6e389')
+API_HASH = environ.get('API_HASH', '')
 BOT_TOKEN = environ.get('BOT_TOKEN', '')
 #---------------------------------------------------------------
 #---------------------------------------------------------------
@@ -25,7 +25,7 @@ MOVIE_GROUP_LINK = environ.get('MOVIE_GROUP_LINK', 'https://t.me/+wvl8v4q_wyA3OT
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002263289884 -1002400162074 -1002148375787').split()]
 #---------------------------------------------------------------
 #---------------------------------------------------------------
-DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://150rs-buy-Barun-dey:150rs-buy-Barun-dey@cluster0.skj2m.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+DATABASE_URI = environ.get('DATABASE_URI', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "ALEXA99")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'My_Tg_files')
 #---------------------------------------------------------------
