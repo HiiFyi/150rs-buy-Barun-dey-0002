@@ -830,8 +830,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )      
     elif query.data == "seeplans":
         btn = [[
-            InlineKeyboardButton('🍁 𝗖𝗹𝗶𝗰𝗸 𝗔𝗹𝗹 𝗣𝗹𝗮𝗻𝘀 & 𝗣𝗿𝗶𝗰𝗲𝘀 🍁', url=f'https://t.me/MovieAdmin0761_bot')
-	     InlineKeyboardButton('☆📸 𝙎𝙚𝙣𝙙 PAYMENT 𝙨𝙘𝙧𝙚𝙚𝙣𝙨𝙝𝙤𝙩 📸☆', url=f'https://t.me/MovieAdmin0761_bot')
+          #  InlineKeyboardButton('🍁 𝗖𝗹𝗶𝗰𝗸 𝗔𝗹𝗹 𝗣𝗹𝗮𝗻𝘀 & 𝗣𝗿𝗶𝗰𝗲𝘀 🍁', url=f'https://t.me/MovieAdmin0761_bot')
+	   #  InlineKeyboardButton('☆📸 𝙎𝙚𝙣𝙙 PAYMENT 𝙨𝙘𝙧𝙚𝙚𝙣𝙨𝙝𝙤𝙩 📸☆', url=f'https://t.me/MovieAdmin0761_bot')
         ],[
             InlineKeyboardButton('• 𝗖𝗹𝗼𝘀𝗲 •', callback_data='close_data')
         ]]
@@ -867,8 +867,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
     #jisshu
     elif query.data == "broze":
        buttons = [[
-            InlineKeyboardButton('🍁 𝗖𝗹𝗶𝗰𝗸 𝗔𝗹𝗹 𝗣𝗹𝗮𝗻𝘀 & 𝗣𝗿𝗶𝗰𝗲𝘀 🍁', url=f'https://t.me/MovieAdmin0761_bot')
-	     InlineKeyboardButton('☆📸 𝙎𝙚𝙣𝙙 PAYMENT 𝙨𝙘𝙧𝙚𝙚𝙣𝙨𝙝𝙤𝙩 📸☆', url=f'https://t.me/MovieAdmin0761_bot')
+         #   InlineKeyboardButton('🍁 𝗖𝗹𝗶𝗰𝗸 𝗔𝗹𝗹 𝗣𝗹𝗮𝗻𝘀 & 𝗣𝗿𝗶𝗰𝗲𝘀 🍁', url=f'https://t.me/MovieAdmin0761_bot')
+	   #  InlineKeyboardButton('☆📸 𝙎𝙚𝙣𝙙 PAYMENT 𝙨𝙘𝙧𝙚𝙚𝙣𝙨𝙝𝙤𝙩 📸☆', url=f'https://t.me/MovieAdmin0761_bot')
         ], [
             InlineKeyboardButton('• 𝗖𝗹𝗼𝘀𝗲 •', callback_data='close_data')
        ]]
