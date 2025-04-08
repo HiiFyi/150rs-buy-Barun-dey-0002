@@ -1014,7 +1014,7 @@ async def refer(bot, message):
         InlineKeyboardButton(f'⏳ {referdb.get_refer_points(message.from_user.id)}', callback_data='ref_point'),
         InlineKeyboardButton('Close', callback_data='close_data')
     ]]  
-    m=await message.reply_sticker("CAACAgUAAxkBAAKMgWdK--u7cCK_CGSxqpwf5gkgMzyNAAKrBAACvu-4V0dQs1WLoficNgQ")      
+  #  m=await message.reply_sticker("CAACAgUAAxkBAAKMgWdK--u7cCK_CGSxqpwf5gkgMzyNAAKrBAACvu-4V0dQs1WLoficNgQ")      
     await m.delete()
     reply_markup = InlineKeyboardMarkup(btn)
     await message.reply_photo(
