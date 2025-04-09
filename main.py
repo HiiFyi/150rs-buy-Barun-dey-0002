@@ -1,18 +1,14 @@
-from telegram import Update
-from telegram.ext import CommandHandler, CallbackContext
 import time
+import datetime
+BOT_START_TIME = time.time()
+from pyrogram import Client, filters
+from pyrogram.types import Message
 
-def ping(update: Update, context: CallbackContext) -> None:
-    start = time.time()
-    message = update.message.reply_text("Pinging...")
-    end = time.time()
-    ping_time = (end - start) * 1000
-    context.bot.edit_message_text(
-        chat_id=message.chat_id,
-        message_id=message.message_id,
-        text=f"Pong! `{int(ping_time)}ms`",
-        parse_mode="Markdown"
-    )
-
-# Add the handler to your dispatcher
-dispatcher.add_handler(CommandHandler("ping", ping))
+@app.on_message(filters.command("ping") & filters.private)
+async def ping_handler(client: Client, message: Message):
+    start_time = time.time()
+    uptime = str(datetime.timedelta(seconds=int(time.time() - BOT_START_TIME)))
+    response = await message.reply("Pinging...")
+    end_time = time.time()
+    ping_time = round((end_time - start_time) * 1000)
+    await response.edit(f"**Pong!**\n⏱️ **Uptime:** `{uptime}`\n⚡ **Ping:** `{ping_time}ms`")
