@@ -208,17 +208,17 @@ async def get_shortlink(link, grp_id, is_second_shortener=False, is_third_shorte
     else:
         settings = SETTINGS
     if IS_VERIFY:
-        if is_third_shortener:             
-            api, site = settings['api_three'], settings['shortner_three']
-        elif:
-         if is_second_shortener:
-          api, site = settings['api_two'], settings['shortner_two']
-             else:
-               if is_four_shortener:
-                   api, site = settings['api_four'], settings['shortner_four']
-              else:
-                   api, site = settings['api'], settings['shortner']
-        shortzy = Shortzy(api, site)
+         if is_third_shortener:             
+              api, site = settings['api_three'], settings['shortner_three']
+              elif:
+                   if is_second_shortener:
+                        api, site = settings['api_two'], settings['shortner_two']
+                   else:
+                        if is_four_shortener:
+                             api, site = settings['api_four'], settings['shortner_four']
+                        else:
+                             api, site = settings['api'], settings['shortner']
+                             shortzy = Shortzy(api, site)
         try:
             link = await shortzy.convert(link)
         except Exception as e:
