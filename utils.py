@@ -202,28 +202,25 @@ def list_to_str(k):
         return ', '.join(str(item) for item in k)
 
 
-async def get_shortlink(link, grp_id, is_second_shortener=False, is_third_shortener=False, is_four_shortener=False, pm_mode=False):
-    if not pm_mode:
-        settings = await get_settings(grp_id)
-    else:
-        settings = SETTINGS
-    if IS_VERIFY:
+async def get_shortlink(link, grp_id, is_second_shortener=False, is_third_shortener=False , pm_mode=False):
+     if not pm_mode:
+         settings = await get_settings(grp_id)
+     else:
+         settings = SETTINGS
+     if IS_VERIFY:
          if is_third_shortener:             
-              api, site = settings['api_three'], settings['shortner_three']
-              else:
-                   if is_second_shortener:
-                        api, site = settings['api_two'], settings['shortner_two']
-                 #  else:
-                      #  if is_four_shortener:
-                         #    api, site = settings['api_four'], settings['shortner_four'] 
-                        else:
-                             api, site = settings['api'], settings['shortner']
-                             shortzy = Shortzy(api, site)
-        try:
-            link = await shortzy.convert(link)
-        except Exception as e:
-            link = await shortzy.get_quick_link(link)
-    return link
+             api, site = settings['api_three'], settings['shortner_three']
+         else:
+             if is_second_shortener:
+                 api, site = settings['api_two'], settings['shortner_two']
+             else:
+                 api, site = settings['api'], settings['shortner']
+         shortzy = Shortzy(api, site)
+         try:
+             link = await shortzy.convert(link)
+         except Exception as e:
+             link = await shortzy.get_quick_link(link)
+     return link
 
 def get_file_id(message: "Message") -> Any:
     media_types = (
