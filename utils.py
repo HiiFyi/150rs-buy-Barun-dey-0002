@@ -210,7 +210,7 @@ async def get_shortlink(link, grp_id, is_second_shortener=False, is_third_shorte
     if IS_VERIFY:
          if is_third_shortener:             
               api, site = settings['api_three'], settings['shortner_three']
-              elif:
+              else:
                    if is_second_shortener:
                         api, site = settings['api_two'], settings['shortner_two']
                    else:
