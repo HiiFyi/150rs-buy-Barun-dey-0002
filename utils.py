@@ -202,7 +202,7 @@ def list_to_str(k):
         return ', '.join(str(item) for item in k)
 
 
-async def get_shortlink(link, grp_id, is_second_shortener=False, is_third_shortener=False , pm_mode=False):
+async def get_shortlink(link, grp_id, is_second_shortener=False, is_third_shortener=False, is_four_shortener=False, pm_mode=False):
     if not pm_mode:
         settings = await get_settings(grp_id)
     else:
@@ -213,6 +213,9 @@ async def get_shortlink(link, grp_id, is_second_shortener=False, is_third_shorte
         else:
             if is_second_shortener:
                 api, site = settings['api_two'], settings['shortner_two']
+           else:
+            if is_four_shortener:
+                api, site = settings['api_four'], settings['shortner_four']
             else:
                 api, site = settings['api'], settings['shortner']
         shortzy = Shortzy(api, site)
