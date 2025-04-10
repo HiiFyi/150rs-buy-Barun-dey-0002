@@ -46,6 +46,7 @@ IS_VERIFY = is_enabled('IS_VERIFY', True)
 TUTORIAL = environ.get("TUTORIAL", "https://t.me/openlinksformovie/42")
 TUTORIAL_2 = environ.get("TUTORIAL_2", "https://t.me/openlinksformovie/43")
 TUTORIAL_3 = environ.get("TUTORIAL_3", "https://t.me/openlinksformovie/44")
+TUTORIAL_4 = environ.get("TUTORIAL_4", "https://t.me/openlinksformovie/44")
 VERIFY_IMG = environ.get("VERIFY_IMG", "https://graph.org/file/1669ab9af68eaa62c3ca4.jpg")
 SHORTENER_API = environ.get("SHORTENER_API", "ec422b5d760c01bbb755208935a9d21b461fdca5")
 SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", 'yummyurl.com')
@@ -53,8 +54,11 @@ SHORTENER_API2 = environ.get("SHORTENER_API2", "ec422b5d760c01bbb755208935a9d21b
 SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", 'yummyurl.com')
 SHORTENER_API3 = environ.get("SHORTENER_API3", "ec422b5d760c01bbb755208935a9d21b461fdca5")
 SHORTENER_WEBSITE3 = environ.get("SHORTENER_WEBSITE3", 'yummyurl.com')
+SHORTENER_API4 = environ.get("SHORTENER_API4", "ec422b5d760c01bbb755208935a9d21b461fdca5")
+SHORTENER_WEBSITE4 = environ.get("SHORTENER_WEBSITE4", 'yummyurl.com')
 TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "14400"))
 THREE_VERIFY_GAP = int(environ.get('THREE_VERIFY_GAP', "14400"))
+FOUR_VERIFY_GAP = int(environ.get('FOUR_VERIFY_GAP', "14400"))
 #---------------------------------------------------------------
 #---------------------------------------------------------------
 LANGUAGES = ["hindi", "english", "telugu", "tamil", "kannada", "malayalam", "bengali", "marathi", "gujarati", "punjabi"]
