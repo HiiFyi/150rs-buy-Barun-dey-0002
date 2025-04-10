@@ -831,6 +831,48 @@ async def set_shortner_3(c, m):
         await save_group_settings(grp_id, 'shortner_three', SHORTENER_WEBSITE3)
         await save_group_settings(grp_id, 'api_three', SHORTENER_API3)
         await m.reply_text(f"<b><u>💢 ᴇʀʀᴏʀ ᴏᴄᴄᴏᴜʀᴇᴅ!!</u>\n\nᴀᴜᴛᴏ ᴀᴅᴅᴇᴅ ʙᴏᴛ ᴏᴡɴᴇʀ ᴅᴇꜰᴜʟᴛ sʜᴏʀᴛɴᴇʀ\n\nɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴄʜᴀɴɢᴇ ᴛʜᴇɴ ᴜsᴇ ᴄᴏʀʀᴇᴄᴛ ꜰᴏʀᴍᴀᴛ ᴏʀ ᴀᴅᴅ ᴠᴀʟɪᴅ sʜᴏʀᴛʟɪɴᴋ ᴅᴏᴍᴀɪɴ ɴᴀᴍᴇ & ᴀᴘɪ\n\nʏᴏᴜ ᴄᴀɴ ᴀʟsᴏ ᴄᴏɴᴛᴀᴄᴛ ᴏᴜʀ <a href=https://t.me/SAKSHI_SUPPORT>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> ꜰᴏʀ sᴏʟᴠᴇ ᴛʜɪs ɪssᴜᴇ...\n\nʟɪᴋᴇ -\n\n`/set_shortner_3 modijiurl.com/ref/Alexa 689aca456fda13db92230a951d83296d118799d5`\n\n💔 ᴇʀʀᴏʀ - <code>{e}</code></b>", quote=True)
+
+@Client.on_message(filters.command('set_verify_4'))
+async def set_shortner_4(c, m):
+    chat_type = m.chat.type
+    if chat_type == enums.ChatType.PRIVATE:
+        return await m.reply_text("<b>Use this command in Your group ! Not in Private</b>")
+    if len(m.text.split()) == 1:
+        return await m.reply("<b>Use this command like this - \n\n`/set_shortner_4 modijiurl.com/ref/Alexa 689aca456fda13db92230a951d83296d118799d5`</b>")
+    sts = await m.reply("<b>♻️ ᴄʜᴇᴄᴋɪɴɢ...</b>")
+    await sts.delete()
+    userid = m.from_user.id if m.from_user else None
+    if not userid:
+        return await m.reply(f"<b>⚠️ ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ᴏꜰ ᴛʜɪs ɢʀᴏᴜᴘ</b>")
+    grp_id = m.chat.id
+    #check if user admin or not
+    if not await is_check_admin(c, grp_id, userid):
+        return await m.reply_text('<b>ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴀᴅᴍɪɴ ɪɴ ᴛʜɪꜱ ɢʀᴏᴜᴘ</b>')
+    if len(m.command) == 1:
+        await m.reply_text("<b>ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ᴀᴅᴅ sʜᴏʀᴛɴᴇʀ & ᴀᴘɪ\n\nᴇx - `/set_shortner_4 modijiurl.com/ref/Alexa 689aca456fda13db92230a951d83296d118799d5`</b>", quote=True)
+        return
+    try:
+        URL = m.command[1]
+        API = m.command[2]
+        resp = requests.get(f'https://{URL}/api?api={API}&url=https://telegram.dog/SAKSHI_SUPPORT').json()
+        if resp['status'] == 'success':
+            SHORT_LINK = resp['shortenedUrl']
+        await save_group_settings(grp_id, 'shortner_four', URL)
+        await save_group_settings(grp_id, 'api_four', API)
+        await m.reply_text(f"<b><u>✅ sᴜᴄᴄᴇssꜰᴜʟʟʏ ʏᴏᴜʀ sʜᴏʀᴛɴᴇʀ ɪs ᴀᴅᴅᴇᴅ</u>\n\nᴅᴇᴍᴏ - {SHORT_LINK}\n\nsɪᴛᴇ - `{URL}`\n\nᴀᴘɪ - `{API}`</b>", quote=True)
+        user_id = m.from_user.id
+        if m.from_user.username:
+            user_info = f"@{m.from_user.username}"
+        else:
+            user_info = f"{m.from_user.mention}"
+        link = (await c.get_chat(m.chat.id)).invite_link
+        grp_link = f"[{m.chat.title}]({link})"
+        log_message = f"#New_Shortner_Set_For_4th_Verify\n\nName - {user_info}\nId - `{user_id}`\n\nDomain name - {URL}\nApi - `{API}`\nGroup link - {grp_link}"
+        await c.send_message(LOG_API_CHANNEL, log_message, disable_web_page_preview=True)
+    except Exception as e:
+        await save_group_settings(grp_id, 'shortner_four', SHORTENER_WEBSITE4)
+        await save_group_settings(grp_id, 'api_four', SHORTENER_API4)
+        await m.reply_text(f"<b><u>💢 ᴇʀʀᴏʀ ᴏᴄᴄᴏᴜʀᴇᴅ!!</u>\n\nᴀᴜᴛᴏ ᴀᴅᴅᴇᴅ ʙᴏᴛ ᴏᴡɴᴇʀ ᴅᴇꜰᴜʟᴛ sʜᴏʀᴛɴᴇʀ\n\nɪꜰ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴄʜᴀɴɢᴇ ᴛʜᴇɴ ᴜsᴇ ᴄᴏʀʀᴇᴄᴛ ꜰᴏʀᴍᴀᴛ ᴏʀ ᴀᴅᴅ ᴠᴀʟɪᴅ sʜᴏʀᴛʟɪɴᴋ ᴅᴏᴍᴀɪɴ ɴᴀᴍᴇ & ᴀᴘɪ\n\nʏᴏᴜ ᴄᴀɴ ᴀʟsᴏ ᴄᴏɴᴛᴀᴄᴛ ᴏᴜʀ <a href=https://t.me/SAKSHI_SUPPORT>sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ</a> ꜰᴏʀ sᴏʟᴠᴇ ᴛʜɪs ɪssᴜᴇ...\n\nʟɪᴋᴇ -\n\n`/set_shortner_3 modijiurl.com/ref/Alexa 689aca456fda13db92230a951d83296d118799d5`\n\n💔 ᴇʀʀᴏʀ - <code>{e}</code></b>", quote=True)
         
 
 @Client.on_message(filters.command('set_log'))
