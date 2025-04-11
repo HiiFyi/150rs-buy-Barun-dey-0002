@@ -816,6 +816,29 @@ async def cb_handler(client: Client, query: CallbackQuery):
     except Exception as e:
         ms.edit(f"Got a sujay error:\n{e}")
         logger.error(f"Please solve this Error sujay Bro (e)")
+
+    elif query.data.startswith("enablesujaychat"):
+        _, chatTitle , chatID = query.data.split(":")
+        print(f"Debug: query.data={query.data}, chatID={chatID}, chatTitle={chatTitle}")
+        try:
+            sts = await db.get_chat(int(chatID))
+            if not sts:
+                return await query.answer("Chat Not Found In DB !", show_alert=True)
+            if not sts.get('is_disabled'):
+                return await query.answer('This chat is not yet disabled.', show_alert=True)
+            await db.re_enable_chat(int(chatID))
+            temp.BANNED_CHATS.remove(int(chatID))
+            btn = [[
+                    InlineKeyboardButton(text=f"😜 BAN Again 😂", callback_data=f"bangrpchat:{chatTitle}:{chatID}")
+                ],[
+                    InlineKeyboardButton(text=f"❌ Close ❌", callback_data="close_data")
+            ]]
+            reply_markup = InlineKeyboardMarkup(btn)
+            ms = await query.edit_message_text(f"**chat successfully Enabled** 💞\n\n**Chat ID**: {chatID}\n\n**Chat Title**:{chatTitle}", reply_markup=reply_markup)
+        except Exception as e:
+            ms.edit(f"Got a sujay error:\n{e}" )
+            logger.error(f"Please solve this Error sujay Bro : {e}")
+
 	
     elif query.data.startswith("stream"):
         user_id = query.from_user.id
