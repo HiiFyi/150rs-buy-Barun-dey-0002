@@ -807,9 +807,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ]
             ]
             reply_markup = InlineKeyboardMarkup(btn)
-                except Exception as e:
-            ms.edit(f"Got a Lazy error:\n{e}" )
-            logger.error(f"Please solve this Error Lazy Bro : {e}")
+            ms = await query.edit_message_text(f"**🍁 Chat successfully verified 🧡**\n\n**Chat ID**: {chatID}\n**Chat Title**:{chatTitle}", reply_markup=reply_markup)
+        except Exception as e:
+            ms.edit(f"Got a sujay error:\n{e}" )
+            logger.error(f"Please solve this Error sujay Bro : {e}")
     # ban group
     elif query.data.startswith("bangrpchat"):
         _, chatTitle, chatID = query.data.split(":")
