@@ -22,6 +22,7 @@ ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ
 USERNAME = environ.get('USERNAME', "https://t.me/Barun_Dey") # ADMIN USERNAME
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002497411601'))
 GROUP_LOGS = int(environ.get('GROUP_LOGS', -1002497411601)) # Request Verification => S - 3
+LAZY_GROUP_LOGS = int(environ.get('LAZY_GROUP_LOGS', -1002497411601))
 MELCOW_NEW_USERS = int(environ.get('MELCOW_NEW_USERS', -1002497411601))
 MOVIE_GROUP_LINK = environ.get('MOVIE_GROUP_LINK', 'https://t.me/+wvl8v4q_wyA3OTll')
 CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002263289884 -1002400162074 -1002148375787').split()]
