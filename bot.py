@@ -65,9 +65,10 @@ async def Jisshu_start():
             print("The Movie Provider Imported => " + plugin_name)
     if ON_HEROKU:
         asyncio.create_task(ping_server())
-    b_users, b_chats = await db.get_banned()
+    b_users, b_chats, sujay_verified = await db.get_banned()
     temp.BANNED_USERS = b_users
     temp.BANNED_CHATS = b_chats
+    temp.SUJAY_VERIFIED_CHATS = sujay_verified # Request Verification => S - 2
     await Media.ensure_indexes()
     me = await JisshuBot.get_me()
     temp.ME = me.id
