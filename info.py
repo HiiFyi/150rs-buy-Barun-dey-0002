@@ -19,9 +19,9 @@ def is_enabled(value, default):
 
 # Bot information *
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ['API_ID'])
-API_HASH = environ['API_HASH']
-BOT_TOKEN = environ['BOT_TOKEN']
+API_ID = int(environ['API_ID',""])
+API_HASH = environ['API_HASH',""]
+BOT_TOKEN = environ['BOT_TOKEN',""]
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -31,11 +31,11 @@ PRIME_LOGO = (environ.get('PRIME_LOGO', 'https://envs.sh/YvB.jpg'))
 
 # Admins, Channels & Users *
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '0').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
-auth_channel = environ.get('AUTH_CHANNEL')
-auth_grp = environ.get('AUTH_GROUP')
+auth_channel = environ.get('AUTH_CHANNEL',"")
+auth_grp = environ.get('AUTH_GROUP',"")
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 
@@ -55,15 +55,15 @@ lazydownloaders = [int(lazydownloaders) if id_pattern.search(lazydownloaders) el
 PRIME_USERS = (lazydownloaders) if lazydownloaders else [] # users who can get & download file without url shortner
 lazy_renamers = [int(lazrenamers) if id_pattern.search(lazrenamers) else lazrenamers for lazrenamers in environ.get('LAZY_RENAMERS', '').split()]
 LAZY_RENAMERS = (lazy_renamers + ADMINS) if lazy_renamers else [] #Add user id of the user in this field those who you want to be Authentic user for file renaming features
-LZURL_PRIME_USERS = [int(lazyurlers) if id_pattern.search(lazyurlers) else lazyurlers for lazyurlers in environ.get('LZURL_PRIME_USERS', '5965340120').split()]
+LZURL_PRIME_USERS = [int(lazyurlers) if id_pattern.search(lazyurlers) else lazyurlers for lazyurlers in environ.get('LZURL_PRIME_USERS', '').split()]
 
 QR_CODE_IMG = environ.get('QR_CODE_IMG','https://envs.sh/YvB.jpg') #add url link of your qr code to recieve money - use telegraph bot or other source to get image
 UPI_ID = environ.get('UPI_ID', 'dbarun326@okhdfcbank') #enter your upi id here - grab it from your online payment methods.
 
 # Others
 TUTORIAL = environ.get('TUTORIAL', 'https://t.me/') # Tutorial video link for opening shortlink website 
-IS_TUTORIAL = bool(environ.get('IS_TUTORIAL', True))
-SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'sujayDeveloper')
+IS_TUTORIAL = bool(environ.get('IS_TUTORIAL', False))
+SUPPORT_CHAT = environ.get('SUPPORT_CHAT', '')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "True")), True)
 IMDB = is_enabled((environ.get('IMDB', "False")), False)
 SINGLE_BUTTON = is_enabled((environ.get('SINGLE_BUTTON', "False")), False)
@@ -81,14 +81,14 @@ PUBLIC_FILE_STORE = is_enabled((environ.get('PUBLIC_FILE_STORE', "False")), Fals
 
 #LazyRenamer Configs
 FLOOD = int(environ.get("FLOOD", "10"))
-LAZY_MODE = bool(environ.get("LAZY_MODE")) #make it true to enable file renaming feature in bot
+LAZY_MODE = bool(environ.get("LAZY_MODE","False")) #make it true to enable file renaming feature in bot
 
 # Requested Content template variables --- 
 ADMIN_USRNM = environ.get('ADMIN_USRNM','onefighterarmy') # WITHOUT @
 MAIN_CHANNEL_USRNM = environ.get('MAIN_CHANNEL_USRNM','') # WITHOUT @
 DEV_CHANNEL_USRNM = environ.get('DEV_CHANNEL_USRNM','') # WITHOUT @
 LAZY_YT_HANDLE = environ.get('LAZY_YT_HANDLE','onefighterarmy')  # WITHOUT @ [  add only handle - don't add full url  ] 
-MOVIE_GROUP_USERNAME = environ.get('MOVIE_GROUP_USERNAME', "+tl1Ll8L8TbQwMjdl") #[ without @ ]
+MOVIE_GROUP_USERNAME = environ.get('MOVIE_GROUP_USERNAME', "") #[ without @ ]
 
 # Url Shortner
 URL_MODE = is_enabled((environ.get("URL_MODE","FALSE")), False) # make it true to enable url shortner in groups or pm
@@ -100,7 +100,7 @@ my_users = [int(my_users) if id_pattern.search(my_users) else my_users for my_us
 MY_USERS = (my_users) if my_users else [] #input the id of that users who can share file in file protection mode
 
 # Online Stream and Download
-PORT = int(environ.get('PORT', 8080))
+PORT = int(environ.get('PORT',''))
 NO_PORT = bool(environ.get('NO_PORT', False))
 APP_NAME = None
 if 'DYNO' in environ:
