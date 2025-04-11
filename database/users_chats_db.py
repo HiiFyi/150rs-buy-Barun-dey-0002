@@ -112,7 +112,7 @@ class Database:
         chat_status=dict(
             is_sujay_verified=True,
         )
-        await self.grp.update_one({'id': int(chat)}, {'$set': {'chat_status': chat_status)})
+        await self.grp.update_one({'id': int(chat)}, {'$set': {'chat_status': chat_status}})
         
     async def add_chat(self, chat, title):
         chat = self.new_group(chat, title)
