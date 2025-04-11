@@ -26,7 +26,7 @@ async def save_group(bot, message):
             ]]
             reply_markup=InlineKeyboardMarkup(buttons)
             k = await message.reply(
-                text='<b>CHAT NOT ALLOWED 🐞\n\nMy admins has restricted me from working here ! If you want to know more about it contact support..</b>',
+                text='<b>CHAT NOT ALLOWED 🐞\n\nMy admins has restricted me from working here ! If you want to know more about it contact support.. ID👉@onefighterarmy</b>',
                 reply_markup=reply_markup,
             )
             try:
@@ -37,28 +37,28 @@ async def save_group(bot, message):
             return
         buttons = [[
             InlineKeyboardButton('🤥 Help', url=f"https://t.me/{temp.U_NAME}?start=help"),
-            InlineKeyboardButton('🔔 Updates', url='https://t.me/LazyDeveloper')
+            InlineKeyboardButton('🔔 Updates', url='https://t.me/onefighterarmy')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await message.reply_text(
             text=f"<b>Thank you For Adding Me In {message.chat.title} ❣️\n\nIf you have any questions & doubts about using me contact support.</b>",
             reply_markup=reply_markup)
 
-        # GROUP ACTIONS IN CONTROL => Coded By YT@LazyDeveloperr with love ❣️
+        # GROUP ACTIONS IN CONTROL => Coded By YT@onefighterarmy with love ❣️
         chatID = message.chat.id
         chatTitle = message.chat.title
-        lz_buttons = [
+        sujay_buttons = [
             [
-                InlineKeyboardButton('🎉 Mark Verified 💞', callback_data=f"verify_lazy_group:{chatTitle}:{chatID}")
+                InlineKeyboardButton('🎉 Mark Verified 💞', callback_data=f"verify_sujay_group:{chatTitle}:{chatID}")
             ],[
                 InlineKeyboardButton('⚙ Ban Chat', callback_data=f"bangrpchat:{chatTitle}:{chatID}")
             ],[
                 InlineKeyboardButton('🚮 Close', callback_data="close_data")
             ]]
-        lazy_markup=InlineKeyboardMarkup(lz_buttons)
-        await bot.send_message(LAZY_GROUP_LOGS,
+        sujay_markup=InlineKeyboardMarkup(sujay_buttons)
+        await bot.send_message(SUJAY_GROUP_LOGS,
                             text=f"Hey babe.\n I am added forcefully to this group named **{chatTitle}** Please tell me if you like to restrict this group...",
-                            reply_markup=lazy_markup)
+                            reply_markup=sujay_markup)
     else:
         settings = await get_settings(message.chat.id)
         if settings["welcome"]:
@@ -185,7 +185,7 @@ async def gen_invite(bot, message):
 
 @Client.on_message(filters.command('ban') & filters.user(ADMINS))
 async def ban_a_user(bot, message):
-    # https://t.me/GetTGLink/4185
+    # https://t.me/sujay5372/4185
     if len(message.command) == 1:
         return await message.reply('Give me a user id / username')
     r = message.text.split(None)
@@ -252,7 +252,7 @@ async def unban_a_user(bot, message):
     
 @Client.on_message(filters.command('users') & filters.user(ADMINS))
 async def list_users(bot, message):
-    # https://t.me/GetTGLink/4184
+    # https://t.me/sujay5372/4184
     raju = await message.reply('Getting List Of Users')
     users = await db.get_all_users()
     out = "Users Saved In DB Are:\n\n"
