@@ -801,7 +801,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             temp.SUJAY_VERIFIED_CHATS.append(int(chatID))
             btn = [
                 [
-		InlineKeyboardButton(text=f"🚫BAN Chat 🤐", callback_data=f"bangrpchat:{chatTitle):{chatID}")
+		InlineKeyboardButton(text=f"🚫BAN Chat 🤐", callback_data=f"bangrpchat:{chatTitle}:{chatID}")
                 ],[
                 InlineKeyboardButton(text=f"❌ Close ❌", callback_data="close_data")
 		]
