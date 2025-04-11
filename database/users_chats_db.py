@@ -107,7 +107,13 @@ class Database:
         b_users = [user['id'] async for user in users]
         sujay_verified = [chat['id'] async for chat in is_verified]
         return b_users, b_chats, sujay_verified
-    
+        
+    async def verify_sujay_chat(self, chat):
+        chat_status=dict(
+            is_sujay_verified=True,
+        )
+        await self.grp.update_one({'id': int(chat)}, {'$set': {'chat_status': chat_status)})
+        
     async def add_chat(self, chat, title):
         chat = self.new_group(chat, title)
         await self.grp.insert_one(chat)
