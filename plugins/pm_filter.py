@@ -806,7 +806,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 InlineKeyboardButton(text=f"❌ Close ❌", callback_data="close_data")
 		]
                 ]
-		reply_markup = InlineKeyboardMarkup(btn)
+                reply_markup = InlineKeyboardMarkup(btn)
                 ms = await query.edit_message_text(f"**🍁 Chat successfully verified 🧡**\n\n**Chat ID**: {chatID}
 		\n**Chat Title**:(chatTitle)", reply_markup=reply_markup)
             except Exception as e:
