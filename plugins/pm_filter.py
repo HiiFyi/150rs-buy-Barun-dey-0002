@@ -24,8 +24,8 @@ CAP = {}
 async def give_filter(client, message):
     try:
         chatIDx = message.chat.id
-        lazy_chatIDx = await db.get_chat(int(chatIDx))
-        if lazy_chatIDx['is_lazy_verified']:
+        sujay_chatIDx = await db.get_chat(int(chatIDx))
+        if sujay_chatIDx['is_sujay_verified']:
             k = await manual_filters(client, message)
     except Exception as e:
         logger.error(f"Chat not verifeid : {e}") 
@@ -33,8 +33,8 @@ async def give_filter(client, message):
     if k == False:
         try:
             chatID = message.chat.id
-            lazy_chatID = await db.get_chat(int(chatID))
-            if lazy_chatID['is_lazy_verified']:
+            sujay_chatID = await db.get_chat(int(chatID))
+            if sujay_chatID['is_sujay_verified']:
                 await auto_filter(client, message)
         except Exception as e:
             logger.error(f"Chat Not verified : {e}") 
