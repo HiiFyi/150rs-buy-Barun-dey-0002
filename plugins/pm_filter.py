@@ -768,7 +768,54 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 disable_web_page_preview=True,                  
                 reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("💸 ᴄʜᴇᴄᴋᴏᴜᴛ ᴘʀᴇᴍɪᴜᴍ ᴘʟᴀɴꜱ 💸", callback_data='seeplans')]]))
             await client.send_message(LOG_CHANNEL, text=f"#FREE_TRAIL_CLAIMED\n\n👤 ᴜꜱᴇʀ ɴᴀᴍᴇ - {query.from_user.mention}\n⚡ ᴜꜱᴇʀ ɪᴅ - {user_id}", disable_web_page_preview=True)
-            return   
+            return
+
+    #Adding This feature to the bot to get the controls over the groups
+#Request Verification => S-5
+
+    elif query.data.startswith("sujay_lazy_group"):
+        _, chatTitle, chatID = query.data.split(":")
+        print(f"Debug: query.data=(query.data), chatID=(chatID), chatTitle={chatTitle}")
+        try:
+            await client.send_message(chatID, text=f"Hello users !\n From now i will provide you contents 24X7 ")
+            await db.verify_sujay_chat(int(chatID))
+            temp.SUJAY_VERIFIED_CHATS.append(int(chatID))
+            btn = [
+                [
+		InlineKeyboardButton(text=f"🚫BAN Chat 🤐", callback_data=f"bangrpchat:{chatTitle):{chatID}")
+                ],[
+                InlineKeyboardButton(text=f"❌ Close ❌", callback_data="close_data")
+		]
+                ]
+		reply_markup = InlineKeyboardMarkup(btn)
+                ms = await query.edit_message_text(f"**🍁 Chat successfully verified 🧡**\n\n**Chat ID**: {chatID}
+		\n**Chat Title**:(chatTitle)", reply_markup=reply_markup)
+            except Exception as e:
+                ms.edit(f"Got a sujay error:\n{e}")
+                logger.error(f"Please solve this Error sujay Bro: {e}")
+
+    elif query.data.startswith("bangrpchat"):
+        _, chatTitle, chatID = query.data.split(":")
+        print("Debug: query.data=(query.data), chatID=(chatID), chatTitle=(chatTitle}")
+        try:
+            await client.send_message(chatID, text=f"Oops! Sorry, Let's Take a break\nThis is my last and Good Bye
+            message to you all. \n\nContact my admin for more info")
+            await db.disable_chat(int(chatID))
+            temp.BANNED_CHATS.append(int(chatID))
+            btn = [
+                ]
+		InlineKeyboardButton(text=f"⚡ Enable Chat 🏵️", callback_data=f"enablelazychat:{chatTitle}:{chatID}
+                ")
+            ],[
+		InlineKeyboardButton(text=f"❌ Close ❌", callback_data="close_data")
+	    ]
+            ]
+            reply_markup = InlinekeyboardMarkup(btn)
+            ms = await query.edit_message_text(f"**chat successfully disabled** ✅\n\n**Chat ID**: {chatID}
+	    \n\n**Chat Title**:{chatTitle}", reply_markup=reply_markup)
+    except Exception as e:
+        ms.edit(f"Got a sujay error:\n{e}")
+        logger.error(f"Please solve this Error sujay Bro (e)")
 	
     elif query.data.startswith("stream"):
         user_id = query.from_user.id
