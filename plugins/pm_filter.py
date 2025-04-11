@@ -812,7 +812,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             except Exception as e:
                 ms.edit(f"Got a sujay error:\n{e}")
                 logger.error(f"Please solve this Error sujay Bro: {e}")
-
     elif query.data.startswith("bangrpchat"):
         _, chatTitle, chatID = query.data.split(":")
         print("Debug: query.data=(query.data), chatID=(chatID), chatTitle=(chatTitle}")
